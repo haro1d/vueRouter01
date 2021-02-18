@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <meta name="viewport" content="width-device-width,initial-scale=1.0">
+
+    <title>VRT</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link rel="stylesheet" id="style" href="first.css" />
+    <style>
+        body,html{
+            
+            width:100%;
+            height:100%;
+            margin:0;
+            padding:0;
+            overflow-x:hidden;
+           
+        }
+        #app{
+            margin:0;
+            width:100%;
+            height:100%;
+        }
+        .show{
+            margin:0;
+            
+            border-color:aquamarine;
+            height:100%;
+            width:100%;
+        }
+        .r04{color:orangered}
+
+       
+
+        .sqrt {
+            font-size: 10px;
+            padding: 8px 10px;
+        }
+
+        .greenEnter{
+            margin-left:20px;
+              color:green;
+            cursor:pointer;
+              -webkit-text-stroke: 0.2px white;
+
+        }
+        .redEnter{
+            margin-left:20px;
+            color:red;
+            cursor:pointer;
+              -webkit-text-stroke: 0.2px white;
+        }
+
+
+         .avatar-uploader .el-upload {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .avatar-uploader .el-upload:hover {
+    border-color: #409EFF;
+  }
+  .avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    line-height: 178px;
+    text-align: center;
+  }
+  .avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
+  }
+    </style>
+</head>
+<body>
+  
+    <div id="app">
+      
+
+        <div style="display:flex">
+            <h4 @click="change(1)" class="greenEnter">绿色主题</h4>
+            <h4 @click="change(2)" class="redEnter">红色主题</h4>
+        </div>
+
+                <el-menu default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" style="width:30%;margin-bottom:20px;display: flex;box-shadow:0 4px 10px 4px #09046f, 0 5px 12px 5px #008634;" background-color="#5b636c"
+  text-color="#fff"
+  active-text-color="#ffd04b">
+                    <router-link to="/"><el-menu-item index="1"><i class="el-icon-location"></i>主页 
+                        </el-menu-item>
+                    </router-link>
+
+                    <router-link to="/foo">
+                        <el-menu-item index="2">
+                            <i class="el-icon-menu"></i>获取图片地址
+                        </el-menu-item>
+                    </router-link>
+
+                    <router-link to="/bar">
+                        <el-menu-item index="3">
+                            <i class="el-icon-document"></i>计算器
+                        </el-menu-item>
+                    </router-link>
+
+                    <router-link to="/third">
+                        <el-menu-item index="4">
+                            <i class="el-icon-star-on"></i>坐标捕获
+                        </el-menu-item>
+                    </router-link>
+
+                </el-menu>
+           
+    
+        <div class="show"><router-view ></router-view></div>
+    </div>
+</body>
+<script src="./my.js"></script>
+<script src="./my2.js"></script>
+<script src="./my3.js"></script>
+<script>
+
+    Vue.use(VueRouter);
+    const routes = [
+    {
+        path: `/`, component: Home
+    },
+    {
+        path: `/foo`, component: Foo
+    },
+    {
+        path: `/bar`, component: Bar
+    },
+    {
+        path: `/third`, component: third
+    },
+
+    ]
+
+
+    const router = new VueRouter({
+        routes
+          // (缩写) 相当于 routes: routes
+    })
+    
+    const app = new Vue({
+        data:{
+        },
+        created() {
+            var style = localStorage.getItem("style");
+            if (style) {
+                document.getElementById('style').setAttribute("href", style); //实现将主题保存在内存中刷新浏览器不改变
+            }
+        },
+        methods: {
+            
+        
+
+
+            getMouseXY(e) {
+                this.x = e.x //获取鼠标的X坐标（鼠标与屏幕左侧的距离，单位为px）
+                this.y = e.y //获取鼠标的Y坐标（鼠标与屏幕顶部的距离，单位为px）
+                console.log(this.x,this.y)
+            },
+
+
+
+            change: function (type) {
+                if (type == 1) {
+                    document.getElementById('style').setAttribute("href", "first.css");
+                    localStorage.setItem("style", "first.css");
+                } else if (type == 2) {
+                    document.getElementById('style').setAttribute("href", "second.css");
+                    localStorage.setItem("style", "second.css");
+                }
+            }
+            },
+        
+        router
+    }).$mount('#app')
+</script>
+
+</html>
