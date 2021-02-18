@@ -1,0 +1,36 @@
+       body{
+                background-color:#daf1df
+            }
+       button {
+            background-color: #4CAF50;
+            border: 50px;
+            color: white;
+            padding: 10px 16px;
+            outline: none;
+            font-size: 14px;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            cursor: pointer;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        }
+
+            button:hover {
+                background-color: #297932;
+                box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+            }
+
+            button:active {
+                
+                box-shadow: 0 5px #666;
+                transform: translateY(3px);
+            }
+            .calcu{
+                 border-style:groove;
+                 border-width:2px;
+                 border-color:#44e5c3;
+                 padding:10px;margin:10px;
+                 width:40%;
+                 box-shadow: 0 12px 16px 0 #4CAF50;
+                 background-color:#e8ffed
+            }
+      
