@@ -1,2 +1,2 @@
 # vueRouter01
-vue_cdn_router
+cdn方式引入vue路由的多文件项目
